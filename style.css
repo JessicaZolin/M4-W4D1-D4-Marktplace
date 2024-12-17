@@ -1,7 +1,7 @@
 /* Mobile */
 @media (max-width: 430px) {
     footer {
-        position: sticky;
+        position: fixed;
         bottom: 4.5rem;
     }
 
@@ -13,7 +13,7 @@
     #products-section {
         position: relative;
         margin-top: 12rem !important;
-        margin-bottom: 4rem !important;
+        padding-bottom: 10rem !important;
     }
 
 }
@@ -21,7 +21,7 @@
 /* Mobile */
 @media (min-width: 431px) and (max-width: 576px) {
     footer {
-        position: sticky;
+        position: fixed;
         bottom: 4.5rem;
     }
 
@@ -33,7 +33,7 @@
     #products-section {
         position: relative;
         margin-top: 10rem !important;
-        margin-bottom: 4rem !important;
+        padding-bottom: 10rem !important;
     }
 
 }
@@ -41,7 +41,7 @@
 /* Tablet */
 @media (min-width: 577px) and (max-width: 992px) {
     footer {
-        position: sticky;
+        position: fixed;
         bottom: 4.5rem;
     }
 
@@ -52,8 +52,8 @@
 
     #products-section {
         position: relative;
-        margin-top: 10rem !important;
-        margin-bottom: 4rem !important;
+        margin-top: 11rem !important;
+        padding-bottom: 10rem !important;
     }
 
 }
@@ -61,7 +61,7 @@
 /* Desktop */
 @media (min-width: 993px) {
     footer {
-        position: sticky;
+        position: fixed;
         bottom: 0;
         left: 0;
         right: 0;
@@ -75,6 +75,7 @@
     #products-section {
         position: relative;
         margin-top: 11.5rem !important;
+        padding-bottom: 10rem !important;
     }
 
 }

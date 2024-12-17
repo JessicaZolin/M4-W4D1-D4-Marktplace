@@ -1,7 +1,7 @@
 let negozio = {
     nomeNegozio: "TechStore",
-    indirizzo: "Via Roma 123, 00100 Roma, Italia",
-    metodiPagamento: ["Carta di Credito", "PayPal", "Bonifico Bancario", "Contrassegno"],
+    indirizzo: "Via Venezia 13, 36016 Thiene, Italy",
+    metodiPagamento: ["Carta di Credito", "PayPal", "Bonifico Bancario", "Satispay"],
     speseSpedizione: 5.99, // in euro
     sogliaSpedizioneGratuita: 50.00, // in euro
     codiciSconto: [
