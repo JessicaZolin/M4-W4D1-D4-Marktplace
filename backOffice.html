@@ -29,7 +29,7 @@
                         <a href="frontpage.html" class="nav-link">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a href="backoffice.html" class="nav-link">BackOffice</a>
+                        <a href="backOffice.html" class="nav-link backoffice-button" type="button">BackOffice</a>
                     </li>
                     <li class="nav-item">
                         <a href="#" class="nav-link">Contact</a>
@@ -114,35 +114,80 @@
     <!-- Products Section: form per aggiungere un prodotto all'API-->
     <div id="products-section" class="container-fluid p-3 d-flex justify-content-center align-items-center">
         <div id="add-product" class="container pt-lg-4">
-            <form class="d-flex flex-column pt-4">
+
+            <!-- Form per aggiungere un prodotto -->
+            <div id="form-create-product" class="d-flex flex-column pt-4 d-none">
                 <div class="d-flex flex-column">
                     <label for="name" class="form-label ps-1">Product Name</label>
-                    <input class="form-control mb-4" type="text" name="name" id="name">
+                    <input class="form-control mb-4" type="text" name="name" id="name" required>
                 </div>
                 <div class="d-flex flex-column">
                     <label for="description" class="form-label ps-1">Description</label>
-                    <input class="form-control mb-4" type="text" name="description" id="description">
+                    <textarea class="form-control mb-4" type="text" name="description" id="description" required></textarea>
                 </div>
                 <div class="d-flex flex-column">
                     <label for="image" class="form-label ps-1">Image</label>
-                    <input class="form-control mb-4" type="text" name="image" id="image">
+                    <input class="form-control mb-4" type="text" name="image" id="image" required>
                 </div>
                 <div class="d-flex gap-5">
                     <div class="d-flex flex-column">
                         <label for="brand" class="form-label ps-1">Brand</label>
-                        <input class="form-control mb-4" type="text" name="brand" id="brand">
+                        <input class="form-control mb-4" type="text" name="brand" id="brand" required>
                     </div>
                     <div class="d-flex flex-column">
                         <label for="price" class="form-label ps-1">Price</label>
-                        <input class="form-control mb-4" type="number" name="price" id="price">
+                        <input class="form-control mb-4" type="number" name="price" id="price" required>
                     </div>
                 </div>
                 <div class="d-flex gap-2">
-                    <button class="btn btn-success" type="submit">Create Product</button>
-                    <button class="btn btn-secondary" type="submit">Modify Product</button>
-                    <button class="btn btn-danger" type="submit">Delete Product</button>
+                    <button id="create-product-button" class="btn btn-success" type="button" onclick="createProduct()">Create Product</button>
                 </div>
-            </form>
+            </div>
+
+            <!-- Form per modificare un prodotto -->
+            <div id="form-modify-product" class="d-flex flex-column pt-4 d-none">
+                <div class="d-flex flex-column">
+                    <label for="name" class="form-label ps-1">Product ID</label>
+                    <input class="form-control mb-4" type="text" name="name" id="id" required>
+                </div>
+                <div class="d-flex flex-column">
+                    <label for="name" class="form-label ps-1">Product Name</label>
+                    <input class="form-control mb-4" type="text" name="name" id="name" required>
+                </div>
+                <div class="d-flex flex-column">
+                    <label for="description" class="form-label ps-1">Description</label>
+                    <textarea class="form-control mb-4" type="text" name="description" id="description" required></textarea>
+                </div>
+                <div class="d-flex flex-column">
+                    <label for="image" class="form-label ps-1">Image</label>
+                    <input class="form-control mb-4" type="text" name="image" id="image" required>
+                </div>
+                <div class="d-flex gap-5">
+                    <div class="d-flex flex-column">
+                        <label for="brand" class="form-label ps-1">Brand</label>
+                        <input class="form-control mb-4" type="text" name="brand" id="brand" required>
+                    </div>
+                    <div class="d-flex flex-column">
+                        <label for="price" class="form-label ps-1">Price</label>
+                        <input class="form-control mb-4" type="number" name="price" id="price" required>
+                    </div>
+                </div>
+                <div class="d-flex gap-2">
+                    <button id="modify-product-button" class="btn btn-secondary" type="button">Modify Product</button>
+                </div>
+            </div>
+
+
+            <!-- Form per eliminare un prodotto -->
+            <div id="form-delete-product" class="d-flex flex-column pt-4 d-none">
+                <div class="d-flex flex-column">
+                    <label for="name" class="form-label ps-1">Product ID</label>
+                    <input class="form-control mb-4" type="text" name="name" id="id" required>
+                </div>
+                <div class="d-flex gap-2">
+                    <button id="delete-product-button" class="btn btn-danger" type="button">Delete Product</button>
+                </div>
+            </div>
         </div>
     </div>
 
