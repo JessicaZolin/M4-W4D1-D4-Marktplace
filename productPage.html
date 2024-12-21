@@ -29,7 +29,7 @@
                         <a href="frontpage.html" class="nav-link">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link backoffice-button" type="button">BackOffice</a>
+                        <a href="frontpage.html" class="nav-link disabled" id="backoffice-button" type="button">BackOffice</a>
                     </li>
                     <li class="nav-item">
                         <a href="#" class="nav-link">Contact</a>
@@ -79,11 +79,11 @@
                 </svg>
             </button>
             <button class="btn">
-                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
-                            class="bi bi-cart3" viewBox="0 0 16 16">
-                            <path
-                                d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l.84 4.479 9.144-.459L13.89 4zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2" />
-                        </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-cart3"
+                    viewBox="0 0 16 16">
+                    <path
+                        d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l.84 4.479 9.144-.459L13.89 4zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2" />
+                </svg>
             </button>
             <button class="btn">
                 <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-search"
@@ -114,27 +114,9 @@
     <!-- Products Section: dettagli prodotto -->
     <div id="products-section" class="container-fluid">
         <div id="products2" class="container d-flex pt-5">
-            
-            <div class="card mb-3 col-12">
-                <div class="row g-0">
-                  <div class="col-md-4 py-2">
-                    <img src="https://www.backmarket.it/cdn-cgi/image/format%3Dauto%2Cquality%3D75%2Cwidth%3D640/https://d2e6ccujb3mkqf.cloudfront.net/8debb43b-94ef-4ec4-8589-9520e9eaa983-1_788be5ce-0df1-4871-96b2-50271a0fdb40.jpg" class="img-fluid rounded-start" alt="...">
-                  </div>
-                  <div class="col-md-8">
-                    <div class="card-body">
-                      <h5 class="card-title">Card title</h5>
-                      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                      <p class="card-text">Price:</p>
-                      <div class="d-flex gap-2">
-                        <button class="btn btn-outline-success">Add to cart</button>
-                        <button class="btn btn-outline-dark">Back to products</button>
-                    </div>
-                    </div>
-                    
-                  </div>
-                </div>
-              </div>
 
+            <!-- dettagli prodotto caricati dinamicamente tramite script-productPage.js -->
+            
         </div>
     </div>
 
@@ -145,7 +127,7 @@
     <footer class="container-fluid p-3 bg-dark text-white ">
         <div id="datiNegozio" class="container">
             <ul class="list-unstyled justify-content-between d-flex flex-column flex-lg-row gap-md-3 m-0">
-                
+
                 <!-- dati caricati dinamicamente tramite script.js -->
                 <li class="col-2" id="nomeNegozio"></li>
                 <li class="col" id="indirizzo"></li>
@@ -168,5 +150,6 @@
 <!-- nostri script -->
 <script src="negozio.js"></script>
 <script src="script.js"></script>
+<script src="script-productPage.js"></script>
 
 </html>
