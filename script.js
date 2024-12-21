@@ -9,13 +9,18 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
-// funzione per aggiornare i dati del negozio nel footer delle pagine
+// funzione per aggiornare i dati del negozio nel footer della pagina
 const datiNegozio = () => {
-    document.getElementById("nomeNegozio").innerHTML = negozio.nomeNegozio;
-    document.getElementById("indirizzo").innerHTML = negozio.indirizzo;
-    document.getElementById("metodiPagamento").innerHTML = negozio.metodiPagamento.join('<br>');
-    document.getElementById("speseSpedizione").innerHTML = `Shipping cost: ${(negozio.speseSpedizione.toFixed(2)).replace('.', ',')} € <br>
-    Free shipping from: ${(negozio.sogliaSpedizioneGratuita.toFixed(2)).replace('.', ',')} €`;
+    let datiNegozio = document.getElementById("datiNegozio");
+    datiNegozio.innerHTML = `
+    <ul class="list-unstyled justify-content-between d-flex flex-column flex-lg-row gap-md-3 m-0">
+        <li class="col-2" id="nomeNegozio">${negozio.nomeNegozio}</li>
+        <li class="col" id="indirizzo">${negozio.indirizzo}</li>
+        <li class="col d-none d-lg-block" id="metodiPagamento">${negozio.metodiPagamento.join('<br>')}</li>
+        <li class="col d-none d-lg-block" id="speseSpedizione">Shipping cost: ${(negozio.speseSpedizione.toFixed(2)).replace('.', ',')} € <br>
+        Free shipping from: ${(negozio.sogliaSpedizioneGratuita.toFixed(2)).replace('.', ',')} €</li>
+    </ul>
+    `;
 }
 
 
@@ -88,8 +93,7 @@ const backoffice = () => {
     let footer = document.getElementsByTagName("footer")[0];
     footer.classList.add("d-none");
     let productsSection = document.getElementById("products-section");
-    productsSection.classList.add("backofficePage");
-    productsSection.id = ("product-section");
+    productsSection.id = ("backofficePage");
     let product = document.getElementById("products");
     console.log(product);
     product.classList.remove("d-flex", "justify-content-center", "flex-wrap", "gap-3", "p-0");
@@ -123,6 +127,39 @@ const backoffice = () => {
             </div>
         </div>
     `;
+    fetch(url, {
+        headers: {
+            "Authorization": token
+        }
+    }).then(response => {
+        if (response.ok) {
+            return response.json();
+        }
+        throw new Error("Errore nella richiesta");
+    }).then(data => {
+        console.log(data);
+    let products = document.getElementById("products");
+        products.innerHTML += `
+        <h1 class="mt-4">Product List</h1>
+        `;
+        data.forEach(product => {
+            products.innerHTML += `
+            <div id="product-list" class="d-flex align-items-center justify-content-center gap-2 border-bottom">
+                <img src="${product.imageUrl}" alt="${product.name}" class="col w-25">
+            <h6 class="col col-lg-2">${product.name}</h6>
+            <p class="m-0 col col-lg-3 d-none d-lg-block">${product.description}</p>
+            <p class="m-0 col d-none d-lg-block">${product.brand}</p>
+            <p class="m-0 col d-none d-lg-block">${product.price} €</p>
+            <div class="d-flex gap-1 gap-lg-3 col flex-column align-items-center">
+                <button class="btn btn-outline-dark" type="button">Modify</button>
+                <button class="btn btn-danger" type="button">Delete</button>
+            </div>
+            </div>
+            `;
+        });
+    }).catch(error => {
+        console.error(error);
+    });
 };
 
 
@@ -194,40 +231,20 @@ const createProduct = () => {
     console.log(typeof name, typeof description, typeof image, typeof brand, typeof price);
 
     // crea lista con i prodotti nella backoffice
-
-    fetch(url, {
-        headers: {
-            "Authorization": token
-        }
-    }).then(response => {
-        if (response.ok) {
-            return response.json();
-        }
-        throw new Error("Errore nella richiesta");
-    }).then(data => {
-        console.log(data);
         let products = document.getElementById("products");
-        products.innerHTML += `
-        <h1 class="mt-4">Product List</h1>
-        `;
-        data.forEach(product => {
             products.innerHTML += `
-            <div id="product-list" class="d-flex align-items-center justify-content-center gap-4 border-bottom">
-                <img src="${product.imageUrl}" alt="${product.name}" class="w-25">
-            <h5 class="col-lg-2">${product.name}</h5>
-            <p class="m-0 col-lg-3">${product.description}</p>
-            <p class="m-0 col">${product.brand}</p>
-            <p class="m-0 col">${product.price} €</p>
-            <div class="d-flex gap-3 col">
+            <div id="product-list" class="d-flex align-items-center justify-content-center gap-2 border-bottom">
+                <img src="${image}" alt="${name}" class="col w-25">
+            <h6 class="col col-lg-2">${name}</h6>
+            <p class="m-0 col col-lg-3 d-none d-lg-block">${description}</p>
+            <p class="m-0 col">${brand}</p>
+            <p class="m-0 col">${price} €</p>
+            <div class="d-flex gap-1 gap-lg-3 col flex-column align-items-center">
                 <button class="btn btn-outline-dark" type="button">Modify</button>
                 <button class="btn btn-danger" type="button">Delete</button>
             </div>
             </div>
             `;
-        });
-    }).catch(error => {
-        console.error(error);
-    });
 };
 
 
