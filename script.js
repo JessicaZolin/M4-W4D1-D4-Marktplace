@@ -52,6 +52,8 @@ const getProducts = () => {
 
 // funzione per visualizzare i prodotti nella sezione products della frontpage
 const displayProducts = (data) => {
+    // scrolla la pagina verso l'alto
+    window.scrollTo(0, 0);
     let products = document.getElementById("products");
     products.innerHTML = "";
     // creo la card per ogni prodotto
@@ -89,12 +91,10 @@ const displayProducts = (data) => {
 
 // funzione per mostrare il form di creazione di un prodotto nella backoffice
 const backoffice = () => {
-    let hero = document.getElementById("hero");
-    hero.classList.add("d-none");
+    /* let hero = document.getElementById("hero");
+    hero.classList.add("d-none"); */
     let footer = document.getElementsByTagName("footer")[0];
     footer.classList.add("d-none");
-    let productsSection = document.getElementById("products-section");
-    productsSection.id = ("backofficePage");
     let product = document.getElementById("products");
     console.log(product);
     product.classList.remove("d-flex", "justify-content-center", "flex-wrap", "gap-3", "p-0");
@@ -167,6 +167,8 @@ const backoffice = () => {
 
 document.getElementById("backoffice-button").addEventListener("click", (event) => {
     event.preventDefault();
+    // scrolla la pagina verso l'alto
+    window.scrollTo(0, 0);
     backoffice();
 });
 
@@ -239,7 +241,6 @@ const createProduct = () => {
                 <img src="${image}" alt="${name}" class="col w-25">
             <h6 class="col col-lg-2">${name}</h6>
             <p class="m-0 col col-lg-3 d-none d-lg-block">${description}</p>
-            <p class="m-0 col">${brand}</p>
             <p class="m-0 col">${price} €</p>
             <div class="d-flex gap-1 gap-lg-3 col flex-column align-items-center">
                 <a href="#?id=${_id}" class="btn btn-outline-dark" type="button" onclick="modifyProduct()">Modify</a>
@@ -248,6 +249,55 @@ const createProduct = () => {
             </div>
             `;
 };
+
+
+
+// funzione per modificare un prodotto
+const modifyProduct = () => {
+    // scrolla la pagina verso l'alto
+    window.scrollTo(0, 0);
+    let product = document.getElementById("products");
+    product.innerHTML = "";
+    product.innerHTML = `
+        <div id="form-create-product" class="d-flex flex-column pt-4">
+            <div class="d-flex flex-column">
+                <label for="name" class="form-label ps-1">Product ID</label>
+                <input class="form-control mb-4" type="text" name="name" id="id" required>
+            </div>
+            <div class="d-flex flex-column">
+                <label for="name" class="form-label ps-1">Product Name</label>
+                <input class="form-control mb-4" type="text" name="name" id="name" required>
+            </div>
+            <div class="d-flex flex-column">
+                <label for="description" class="form-label ps-1">Description</label>
+                <textarea class="form-control mb-4" type="text" name="description" id="description" required></textarea>
+            </div>
+            <div class="d-flex flex-column">
+                <label for="image" class="form-label ps-1">Image</label>
+                <input class="form-control mb-4" type="text" name="image" id="image" required>
+            </div>
+            <div class="d-flex gap-5">
+                <div class="d-flex flex-column">
+                    <label for="brand" class="form-label ps-1">Brand</label>
+                    <input class="form-control mb-4" type="text" name="brand" id="brand" required>
+                </div>
+                <div class="d-flex flex-column">
+                    <label for="price" class="form-label ps-1">Price</label>
+                    <input class="form-control mb-4" type="number" name="price" id="price" required>
+                </div>
+            </div>
+            <div class="d-flex gap-2">
+                <button id="create-product-button" class="btn btn-success" type="button" onclick="createProduct()">Create Product</button>
+            </div>
+        </div>
+    `;
+    let params = new URLSearchParams(window.location.hash.slice(1));
+    let id = params.get("id");
+    console.log(id);
+
+    //////  SPOSTA TUTTO BACKOFFICE SU ALTRA PAGINA PER FAR FUNZIONARE TUTTI I LINK
+}
+
 
 
 // delete product   

@@ -4,6 +4,8 @@ console.log(params);
 const id = params.get("id");
 console.log(id);
 
+
+// funzione per ottenere i dettagli del prodotto
 fetch(url + id, {
     headers: {
         "Authorization": token
@@ -20,6 +22,9 @@ fetch(url + id, {
     console.error("Errore nella richiesta:", error);
 });
 
+
+
+// funzione per visualizzare i dettagli del prodotto
 const displayProductDetails = (product) => {
     let product2 = document.getElementById("products2");
     product2.innerHTML = `
