@@ -10,10 +10,10 @@
 
     <!-- nostro stile -->
     <link rel="stylesheet" href="style.css">
-    <title>Marktplace</title>
+    <title>Backoffice</title>
 </head>
 
-<body class="container-fluid m-0 p-0 vh-100">
+<body class="container-fluid m-0 p-0">
 
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg bg-body-tertiary position-fixed w-100 top-0 z-3">
@@ -102,8 +102,8 @@
     <!-- Hero Section -->
     <div id="hero" class="container-fluid p-3 bg-dark text-white z-2">
         <div class="container d-flex flex-column justify-content-center align-items-center">
-            <h3 class="text-center">Welcome to our Marketplace</h3>
-            <p class="text-center m-0">Buy and sell products online</p>
+            <h1 class="text-center">Marketplace - Backoffice</h1>
+            <p class="text-center m-0">Add new products or modify existing ones</p>
         </div>
     </div>
 
@@ -111,13 +111,15 @@
 
 
 
-    <!-- Products Section -->
-    <div id="products-section" class="container-fluid p-3 products-section">
-        <div id="products" class="container d-flex justify-content-center flex-wrap gap-3 p-0">
+    <!-- Products Section: form per aggiungere un prodotto all'API-->
+    <div id="backofficePage" class="container-fluid p-3 d-flex justify-content-center align-items-center">
+        <div id="add-product" class="container pt-lg-4">
 
-            <!-- popolata dinamicamente tramite JS -->
-
+           <!-- popolata dinamicamente tramite JS -->
         </div>
+        <!-- <div id="product-list" class="container pt-lg-4">
+
+        </div> -->
     </div>
 
 
@@ -126,9 +128,14 @@
     <!-- Footer -->
     <footer class="container-fluid p-3 bg-dark text-white">
         <div id="datiNegozio" class="container">
+            <ul class="list-unstyled justify-content-between d-flex flex-column flex-lg-row gap-md-3 m-0">
 
                 <!-- dati caricati dinamicamente tramite script.js -->
-            
+                <li class="col-2" id="nomeNegozio"></li>
+                <li class="col" id="indirizzo"></li>
+                <li class="col d-none d-lg-block" id="metodiPagamento"></li>
+                <li class="col d-none d-lg-block" id="speseSpedizione"></li>
+            </ul>
         </div>
     </footer>
 
@@ -145,5 +152,6 @@
 <!-- nostri script -->
 <script src="negozio.js"></script>
 <script src="script.js"></script>
+<script src="script-backOfiice.js"></script>
 
 </html>

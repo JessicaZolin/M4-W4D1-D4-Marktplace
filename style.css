@@ -12,14 +12,14 @@
 
     #products-section {
         position: relative;
-        margin-top: 12rem !important;
+        margin-top: 10rem !important;
         padding-bottom: 38rem !important;
     }
 
-    /* #backofficePage {
-        margin-top: 3rem !important;
+    #backofficePage {
+        margin-top: 10rem !important;
         padding-bottom: 5rem !important;
-    } */
+    }
 
 }
 
@@ -41,10 +41,10 @@
         padding-bottom: 10rem !important;
     }
 
-    /* #backofficePage {
-        margin-top: 3rem !important;
+    #backofficePage {
+        margin-top: 10rem !important;
         padding-bottom: 5rem !important;
-    } */
+    }
 
 
 }
@@ -67,10 +67,10 @@
         padding-bottom: 10rem !important;
     }
 
-    /* #backofficePage {
-        margin-top: 3rem !important;
+    #backofficePage {
+        margin-top: 11rem !important;
         padding-bottom: 5rem !important;
-    } */
+    }
 
 }
 
@@ -94,9 +94,9 @@
         padding-bottom: 10rem !important;
     }
 
-   /*  #backofficePage {
-        margin-top: 5rem !important;
-    } */
+   #backofficePage {
+        margin-top: 11.5rem !important;
+    }
 
 }
 
