@@ -1,6 +1,12 @@
 // fa apartire la funzione backoffice al caricamento della pagina
 
 document.addEventListener("DOMContentLoaded", () => {
+    document.getElementById("backoffice-button").addEventListener("click", (event) => {
+        event.preventDefault();
+        // scrolla la pagina verso l'alto
+        window.scrollTo(0, 0);
+        backoffice()
+    });
     backoffice()
 })
 
@@ -89,12 +95,7 @@ const backoffice = () => {
 };
 
 
-document.getElementById("backoffice-button").addEventListener("click", (event) => {
-    event.preventDefault();
-    // scrolla la pagina verso l'alto
-    window.scrollTo(0, 0);
-    backoffice()
-});
+
 
 
 // -------------------------------------AGGIUNGI PRODOTTO ALL'API-------------------------------------
@@ -125,8 +126,8 @@ const addProduct = (name, description, image, brand, price) => {
             if (response.ok) {
                 return response.json();
             }
-            alert("I campi son tutti obbligatori: inserisci TUTTI i dati")
-            throw new Error("Errore nella richiesta (mancano dei dati): stato" + response.status);
+            alert("I campi son tutti obbligatori: inserisci TUTTI i dati / controlla che il prodotto non sia già stato inserito")
+            throw new Error("Errore nella richiesta (mancano dei dati): stato " + response.status);
         }).then(data => {
             console.log(data);
             return data;
