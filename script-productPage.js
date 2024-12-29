@@ -1,11 +1,15 @@
-// cerca l'id del prodotto nella url dopo il click sul bottone dettagli
+// -------------------------------------cerca ID prodotto nella url dopo click su bottone dettagli-------------------------------------
+
+
 const params = new URLSearchParams(window.location.search);
 console.log(params);
 const id = params.get("id");
 console.log(id);
 
 
-// funzione per ottenere i dettagli del prodotto
+// -------------------------------------ottieni dettagli prodotto -------------------------------------
+
+
 fetch(url + id, {
     headers: {
         "Authorization": token
@@ -23,8 +27,9 @@ fetch(url + id, {
 });
 
 
+// -------------------------------------visualizza dettagli prodotto -------------------------------------
 
-// funzione per visualizzare i dettagli del prodotto
+
 const displayProductDetails = (product) => {
     let product2 = document.getElementById("products2");
     product2.innerHTML = `

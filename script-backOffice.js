@@ -347,9 +347,7 @@ const saveChanges = () => {
 
         }).catch(error => {
             console.error(error);
-        });
-
-    
+        });  
 }
 
 
