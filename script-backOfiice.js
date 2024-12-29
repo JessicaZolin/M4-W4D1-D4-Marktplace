@@ -220,7 +220,7 @@ const modifyProduct = () => {
                 </div>
             </div>
             <div class="d-flex gap-2">
-                <button id="modify-product-button" class="btn btn-success" type="button" onclick="modifyProduct()">Modify Product</button>
+                <button id="modify-product-button" class="btn btn-success" type="button" onclick="saveChanges()">Modify Product</button>
             </div>
         </div>
     `;
@@ -253,7 +253,7 @@ const modifyProduct = () => {
             data.forEach(product => {
                 if (product._id === id) {
                     products.innerHTML += `
-                        <div class="d-flex align-items-center justify-content-center gap-2 border-bottom product">
+                        <div id="product" class="d-flex align-items-center justify-content-center gap-2 border-bottom">
                             <img src="${product.imageUrl}" alt="${product.name}" class="col w-25">
                             <h6 class="col col-lg-2 text-center">${product.name}</h6>
                             <p class="m-0 col col-lg-3 d-none d-lg-block">${product.description}</p>
@@ -266,7 +266,7 @@ const modifyProduct = () => {
                         </div>
                         `;
 
-                    // Popola automaticamente il campo Product ID se disponibile
+                    // Popola automaticamente tutti i campi se il Product ID è se disponibile
                     if (id) {
                         document.getElementById("id").value = id;
                         document.getElementById("name").value = product.name;
@@ -275,7 +275,7 @@ const modifyProduct = () => {
                         document.getElementById("brand").value = product.brand;
                         document.getElementById("price").value = product.price;
                     } else {
-                        console.warn("Nessun ID trovato nell'URL");
+                        alert("Nessun ID trovato nell'URL");
                     }
                 }
             });
@@ -285,6 +285,71 @@ const modifyProduct = () => {
 
     }, 100);
 };
+
+
+// -------------------------------------Salva le modifiche apportate al prodotto-------------------------------------
+
+
+const saveChanges = () => {
+
+    let id = document.getElementById("id").value;
+    let name = document.getElementById("name").value;
+    let description = document.getElementById("description").value;
+    let image = document.getElementById("image").value;
+    let brand = document.getElementById("brand").value;
+    let price = parseFloat(document.getElementById("price").value);
+
+    console.log(id, name, description, image, brand, price);
+
+
+    // creo il nuovo prodotto
+    let newProduct = {
+        name: name,
+        description: description,
+        brand: brand,
+        imageUrl: image,
+        price: price,
+    }
+
+    // aggiungo il prodotto all'API
+    fetch(url + id, {
+        method: "PUT",
+        body: JSON.stringify(newProduct),
+        headers: {
+            "Content-type": "application/json",
+            "Authorization": token
+        }
+    })
+        .then(response => {
+            if (response.ok) {
+                return response.json();
+            }
+            alert("I campi son tutti obbligatori: inserisci TUTTI i dati")
+            throw new Error("Errore nella richiesta (mancano dei dati): stato" + response.status);
+        }).then(data => {
+            console.log(data);
+            let products = document.getElementById("product");
+            products.innerHTML = `
+                <div id="product" class="d-flex align-items-center justify-content-center gap-2 border-bottom">
+                    <img src="${data.imageUrl}" alt="${data.name}" class="col w-25">
+                    <h6 class="col col-lg-2 text-center">${data.name}</h6>
+                    <p class="m-0 col col-lg-3 d-none d-lg-block">${data.description}</p>
+                    <p class="m-0 col d-none d-lg-block text-center">${data.brand}</p>
+                    <p class="m-0 col d-none d-lg-block text-center">${data.price.toFixed(2).replace('.', ',')} €</p>
+                    <div class="d-flex gap-1 gap-lg-3 col flex-column align-items-center">
+                        <a href="#?id=${data._id}" class="btn btn-outline-dark" type="button" onclick="modifyProduct()">Modify</a>
+                        <a href="#?id=${data._id}" class="btn btn-danger" type="button" onclick="deleteProduct()">Delete</a>
+                    </div>
+                </div>
+                `;
+            alert(`Articolo: ${data.name} sucessfully  correttamente`)
+
+        }).catch(error => {
+            console.error(error);
+        });
+
+    
+}
 
 
 // -------------------------------------ELIMINA PRODOTTO-------------------------------------
@@ -318,7 +383,7 @@ const deleteProduct = () => {
                 }
             }).then(response => {
                 console.log(data);
-                
+
                 alert(`Product succesfully removed: ${deleteProduct.name}`)
                 backoffice()
             })
