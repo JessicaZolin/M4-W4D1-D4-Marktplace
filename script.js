@@ -10,7 +10,9 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
-// funzione per aggiornare i dati del negozio nel footer della pagina
+// ------------------------------------- aggiunge dati negozio a footer -------------------------------------
+
+
 const datiNegozio = () => {
     let datiNegozio = document.getElementById("datiNegozio");
     datiNegozio.innerHTML = `
@@ -51,8 +53,8 @@ const navbar = () => {
 
                 <!-- Form per cercare un prodotto -->
                 <form class="d-none d-lg-flex p-3" role="search">
-                    <input type="text" class="form-control me-2" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-dark" type="submit">Search</button>
+                    <input id="search-product" type="text" class="form-control me-2" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-dark" type="submit" onclick="searchProduct()">Search</button>
                 </form>
 
                 <!-- Bottone per accedere -->
@@ -106,10 +108,12 @@ const navbar = () => {
         `;
 }
 
-// --------------------------------- FRONTPAGE ---------------------------------
+
+// ------------------------------------------- FRONTPAGE -------------------------------------------
 
 
-// funzione per ottenere i dati dei prodotti dal backend (GET)
+// ------------------------------------------- ottiene dati dei prodotti dal backend (GET) -------------------------------------------
+
 const getProducts = () => {
 
     fetch(url, {
@@ -133,10 +137,9 @@ const getProducts = () => {
 }
 
 
-// -----------------------------------------------------------------------------------------------
+// ------------------------------------------- visualizza prodotti nella sezione product della frontpage -------------------------------------------
 
 
-// funzione per visualizzare i prodotti nella sezione products della frontpage
 const displayProducts = (data) => {
     // scrolla la pagina verso l'alto
     window.scrollTo(0, 0);
@@ -150,16 +153,16 @@ const displayProducts = (data) => {
         card.innerHTML = `
         <img src="${product.imageUrl}" class="card-img-top p-2 h-100 mx-auto" alt="${product.name}">
             <div class="card-body d-flex flex-column justify-content-between">
-                <div class="d-flex flex-column justify-content-between" style="height: 9rem;">
+                <div class="d-flex flex-column justify-content-between" style="height: 10rem;">
                     <h4 class="card-title">${product.name}</h4>
-                    <p class="card-text text-muted text-decoration-underline">${product.brand}</p>
+                    <p class="card-text text-muted text-decoration-underline m-0">${product.brand}</p>
                     <hr>
                 </div>
                 
                 <div>
                     <p class="card-text">Price: ${product.price.toFixed(2).replace('.', ',')} €</p>
                     <div class="mt-3">
-                        <a href="productPage.html?id=${product._id}" class="btn btn-outline-danger">dettagli</a>
+                        <a href="productPage.html?id=${product._id}" class="btn btn-outline-danger">details</a>
                         <a href="#" class="btn btn-outline-dark justify-content-center align-items-center"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-cart3" viewBox="0 0 16 16">
                         <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l.84 4.479 9.144-.459L13.89 4zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2" />
                         </svg>
