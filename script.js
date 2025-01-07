@@ -1,6 +1,7 @@
 // variabili globali
 let url = "https://striveschool-api.herokuapp.com/api/product/"
-let token = "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzYzNGYxNzk5MDYxMDAwMTViNjc3YWEiLCJpYXQiOjE3MzQ1NjMwOTMsImV4cCI6MTczNTc3MjY5M30.L1m8gbLoPM1-bBITECcvMgiwrUcmCBi_A1QWgifXpiw"
+let token = "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzdkMDQ3YzdjMWUwYjAwMTUxNzIxYmEiLCJpYXQiOjE3MzYyNDYzOTYsImV4cCI6MTczNzQ1NTk5Nn0.tuA9li1mYuZWkBojfkAlq77dmETJl1fQVQezMeFHfhQ"
+
 
 // funzioni da far girare all'apertura della pagina
 document.addEventListener("DOMContentLoaded", () => {
@@ -107,6 +108,41 @@ const navbar = () => {
         </div>
         `;
 }
+
+
+// ------------------------------------------- funzione search -------------------------------------------
+
+
+/* const searchProduct = (event) => {
+    event.preventDefault()
+    let searchedWord = document.getElementById("search-product").value;
+    
+    fetch(url, {
+        headers: {
+            "Authorization": token
+        }
+    }).then(response => {
+        if (response.ok) {
+            return response.json();
+        }
+        throw new Error("Errore nella richiesta");
+    }).then(data => {
+        console.log(data); 
+        if (document.body.contains(document.getElementById("products"))) {
+            let cardProduct = document.getElementsByClassName("card")
+            console.log(cardProduct);
+            
+
+        }
+
+    }).catch(error => {
+        console.error(error);
+    });
+} */
+
+
+
+
 
 
 // ------------------------------------------- FRONTPAGE -------------------------------------------
